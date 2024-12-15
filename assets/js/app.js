@@ -1,8 +1,8 @@
 'use strict';
 
-import { select, listen } from './utils.js';
+import { select, listen, selectAll } from './utils.js';
 
-const API_URL = 'https://www.dnd5eapi.co/api/spells';
+const BASE_URL = 'https://www.dnd5eapi.co';
 
 const options = {
   method: 'GET',
@@ -12,21 +12,22 @@ const options = {
   mode: 'cors'
 }
 
-const input = select('#search');
+const filterLevel = select('#level');
 const button = select('.button');
+const spellList = select('#spell-list');
+const spellCard = select('.card');
 
 async function getAllSpells() {
   try {
-    const response = await fetch(API_URL, options);
+    const spellIndexes = await fetch(BASE_URL + '/api/spells', options);
 
-    if (!response.ok) {
-      throw new Error(`${response.statusText} (${response.status})`);
+    if (!spellIndexes.ok) {
+      throw new Error(`${spellIndexes.statusText} (${spellIndexes.status})`);
     }
 
-      const data = await response.json();
-      const spells = data.results;
-      
-      return spells;
+    const data = await spellIndexes.json();
+    const spells = data.results;
+    return spells;
   } catch (error) {
     console.log(error.message);
   }
@@ -51,15 +52,70 @@ async function getSpellDetails(spell) {
     const spellUrl = spellData.url;
     const response = await fetch(`https://www.dnd5eapi.co${spellUrl}`, options);
     const spellInfo = await response.json();
-    console.log(spellInfo);
+    return spellInfo;
   }
 }
 
-// button.addEventListener('click', () => {
-//   console.log('WTF');
-// });
+async function listAllSpells() {
+  const spells = await getAllSpells();
+  
+  if (spells) {
+    spells.sort((a, b) => a.level - b.level);
+    spells.forEach(spell => {
+      let name = spell.name;
+      let level = spell.level;
+      buildSpellList(name, level);
+    })
+  }
+  const listedSpells = selectAll('.spell');
 
+  listedSpells.forEach(spell => {
+
+    listen('click', spell, async function() {
+      const spellName = spell.querySelector('h4').textContent;
+      const spellInfo = await getSpellDetails(spellName);
+      
+      if (spellInfo) {
+        displaySpellInfo(spellInfo);
+      }
+    });
+  });
+}
+
+function displaySpellInfo(spell) {
+  
+}
+
+
+function buildSpellList(name, level) {
+  if (level === 0) {
+    level = 'Cantrip';
+    spellList.innerHTML += `
+    <li class="spell"><p>${level}</p><h4>${name}</h4></li>
+    `; 
+  } else {
+  spellList.innerHTML += `
+  <li class="spell"><p>Level ${level}</p><h4>${name}</h4></li>
+  `;
+  }
+}
+
+function filterSpells() {
+  const spells = selectAll('.spell');
+  const filterValue = filterLevel.value;
+
+  spells.forEach(item => {
+    const text = item.innerText.toLowerCase();
+
+    if (text.includes(filterValue)) {
+      item.classList.remove('none');
+    } else {
+      item.classList.add('none');
+    }
+  });
+}
+
+listAllSpells();
 listen('click', button, () => {
-  let spell = input.value;
-  getSpellDetails(spell);
+  filterSpells();
 });

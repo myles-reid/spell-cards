@@ -10,3 +10,12 @@ body {
   background-color: var(--app-color-dark-bg);
 }
 
+li {
+  display: flex;
+  color: white;
+}
+
+li p {
+  margin-right: 10px;
+}
+

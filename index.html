@@ -19,8 +19,28 @@
   <body>
     <main>
       <h2>Spells</h2>
-      <input type="text" id="search" placeholder="Search for spells...">
+      <select name="level" id="level">
+        <option selected disabled hidden>--Choose Spell Level--</option>
+        <option value="cantrip">Cantrip</option>
+        <option value="1">1st Level</option>
+        <option value="2">2nd Level</option>
+        <option value="3">3rd Level</option>
+        <option value="4">4th Level</option>
+        <option value="5">5th Level</option>
+        <option value="6">6th Level</option>
+        <option value="7">7th Level</option>
+        <option value="8">8th Level</option>
+        <option value="9">9th Level</option>
+      </select>
       <button class="button">Search</button>
+      <section class="spell-list">
+        <ul id="spell-list">
+        </ul>
+      </section>
+      <section class="spell-card">
+        <div class="card">
+        </div>
+      </section>
     </main>
   </body>
 </html>
