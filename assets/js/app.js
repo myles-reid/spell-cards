@@ -83,9 +83,20 @@ async function listAllSpells() {
 }
 
 function displaySpellInfo(spell) {
+  
   spellCard.innerHTML = `
   <h2>${spell.name}</h2>
-  <p>Level: ${spell.level}</p>
+  `
+  if (spell.level === 0) {
+    spell.level = 'Cantrip';
+    spellCard.innerHTML += `
+    <p>${spell.level}</p>`
+  } else {
+    spellCard.innerHTML += `
+    <p>Level ${spell.level}</p>`
+  }
+
+  spellCard.innerHTML += `
   <p>${spell.desc}</p>
   <p>Range: ${spell.range}</p>
   <p>Duration: ${spell.duration}</p>
