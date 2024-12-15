@@ -83,7 +83,16 @@ async function listAllSpells() {
 }
 
 function displaySpellInfo(spell) {
-  
+  spellCard.innerHTML = `
+  <h2>${spell.name}</h2>
+  <p>Level: ${spell.level}</p>
+  <p>${spell.desc}</p>
+  <p>Range: ${spell.range}</p>
+  <p>Duration: ${spell.duration}</p>
+  <p>Casting Time: ${spell.casting_time}</p>
+  <p>Damage Type: ${spell.damage ? spell.damage.damage_type.name : 'None'}</p>
+  <p>Higher Level: ${spell.higher_level ? spell.higher_level : 'None'}</p>
+  `;
 }
 
 

@@ -10,6 +10,12 @@ body {
   background-color: var(--app-color-dark-bg);
 }
 
+.spell-list {
+  height: 200px;
+  width: fit-content;
+  overflow-y: scroll;
+}
+
 li {
   display: flex;
   color: white;
@@ -17,5 +23,10 @@ li {
 
 li p {
   margin-right: 10px;
+}
+
+.card {
+  color: white;
+  width: 400px;
 }
 
