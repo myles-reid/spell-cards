@@ -1,0 +1,12 @@
+@charset "utf-8";
+@import url(./utils.css);
+@import url(./root.css);
+
+html {
+  font-family: 'Nunito Sans', 'Fira Sans', Arial, sans-serif;
+}
+
+body {
+  background-color: var(--app-color-dark-bg);
+}
+
