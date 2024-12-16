@@ -16,6 +16,17 @@ const filterLevel = select('#level');
 const button = select('.button');
 const spellList = select('#spell-list');
 const spellCard = select('.card');
+const name = select('.spell-name');
+const level = select('.spell-level');
+const castTime = select('.cast-time');
+const range = select('.sp-range');
+const area = select('.sp-area');
+const components = select('.sp-components');
+const duration = select('.sp-duration');
+const description = select('.description');
+const higherLevel = select('.higher-levels');
+const magicSchool = select('.magic-school');
+const classes = select('.sp-classes');
 
 async function getAllSpells() {
   try {
@@ -71,7 +82,7 @@ async function listAllSpells() {
 
   listedSpells.forEach(spell => {
 
-    listen('click', spell, async function() {
+    listen('focus', spell, async function() {
       const spellName = spell.querySelector('h4').textContent;
       const spellInfo = await getSpellDetails(spellName);
       
@@ -88,16 +99,6 @@ async function listAllSpells() {
 }
 
 function displaySpellInfo(spell) {
-  const name = select('.spell-name');
-  const level = select('.spell-level');
-  const castTime = select('.cast-time');
-  const range = select('.sp-range');
-  const area = select('.sp-area');
-  const components = select('.sp-components');
-  const duration = select('.sp-duration');
-  const description = select('.description');
-  const higherLevel = select('.higher-levels');
-
   name.textContent = spell.name;
   level.textContent = spell.level === 0 ? 'Cantrip' : `Level ${spell.level}`;
   castTime.textContent = spell.casting_time;
@@ -113,39 +114,22 @@ function displaySpellInfo(spell) {
   duration.textContent = spell.duration;
   description.textContent = spell.desc;
   higherLevel.textContent = spell.higher_level ? spell.higher_level : 'None';
+  magicSchool.textContent = spell.school.name;
+  classes.textContent = spell.classes.map(c => c.name).join(', ');
 
-  // spellCard.innerHTML = `
-  // <h2>${spell.name}</h2>
-  // `
-  // if (spell.level === 0) {
-  //   spell.level = 'Cantrip';
-  //   spellCard.innerHTML += `
-  //   <p>${spell.level}</p>`
-  // } else {
-  //   spellCard.innerHTML += `
-  //   <p>Level ${spell.level}</p>`
-  // }
-
-  // spellCard.innerHTML += `
-  // <p>${spell.desc}</p>
-  // <p>Range: ${spell.range}</p>
-  // <p>Duration: ${spell.duration}</p>
-  // <p>Casting Time: ${spell.casting_time}</p>
-  // <p>Damage Type: ${spell.damage ? spell.damage.damage_type.name : 'None'}</p>
-  // <p>Higher Level: ${spell.higher_level ? spell.higher_level : 'None'}</p>
-  // `;
 }
+
 
 
 function buildSpellList(name, level) {
   if (level === 0) {
     level = 'Cantrip';
     spellList.innerHTML += `
-    <li class="spell"><p>${level}</p><h4>${name}</h4></li>
+    <li class="spell" tabindex=0><p>${level}</p><h4>${name}</h4></li>
     `; 
   } else {
   spellList.innerHTML += `
-  <li class="spell"><p>Level ${level}</p><h4>${name}</h4></li>
+  <li class="spell" tabindex=0><p>Level ${level}</p><h4>${name}</h4></li>
   `;
   }
 }
