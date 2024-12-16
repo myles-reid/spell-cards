@@ -68,10 +68,7 @@ a {
   place-items: center;
 }
 
-.row {
-  gap: 20px;
-  flex-wrap: wrap;
-}
+
 
 .gap-30 {
   gap: 30px;

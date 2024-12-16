@@ -13,7 +13,7 @@ const options = {
 }
 
 const filterLevel = select('#level');
-const button = select('.button');
+const filter = select('.filter');
 const spellList = select('#spell-list');
 const spellCard = select('.card');
 const name = select('.spell-name');
@@ -27,6 +27,8 @@ const description = select('.description');
 const higherLevel = select('.higher-levels');
 const magicSchool = select('.magic-school');
 const classes = select('.sp-classes');
+const ritualTag = select('.ritual-tag');
+const addSpell = select('.add-spell');
 
 async function getAllSpells() {
   try {
@@ -98,29 +100,6 @@ async function listAllSpells() {
   });
 }
 
-function displaySpellInfo(spell) {
-  name.textContent = spell.name;
-  level.textContent = spell.level === 0 ? 'Cantrip' : `Level ${spell.level}`;
-  castTime.textContent = spell.casting_time;
-  range.textContent = spell.range;
-
-  if (spell.area_of_effect) {
-    area.textContent = spell.area_of_effect.size + 'ft ' + spell.area_of_effect.type;
-  } else {
-    area.textContent = '';
-  }
-  
-  components.textContent = spell.components;  
-  duration.textContent = spell.duration;
-  description.textContent = spell.desc;
-  higherLevel.textContent = spell.higher_level ? spell.higher_level : 'None';
-  magicSchool.textContent = spell.school.name;
-  classes.textContent = spell.classes.map(c => c.name).join(', ');
-
-}
-
-
-
 function buildSpellList(name, level) {
   if (level === 0) {
     level = 'Cantrip';
@@ -149,7 +128,56 @@ function filterSpells() {
   });
 }
 
+function displaySpellInfo(spell) {
+  name.textContent = spell.name;
+  level.textContent = spell.level === 0 ? 'Cantrip' : `Level ${spell.level}`;
+  castTime.textContent = spell.casting_time;
+  range.innerText = spell.range;
+
+  setAreaOfEffect(spell);
+  setRitualTag(spell);
+  
+  components.textContent = spell.components.join(', ');  
+  duration.textContent = spell.duration;
+  description.textContent = spell.desc;
+  higherLevel.textContent = spell.higher_level ? spell.higher_level : 'None';
+  magicSchool.textContent = spell.school.name;
+  classes.textContent = spell.classes.map(c => c.name).join(', ');
+
+}
+
+function setAreaOfEffect(spell) {
+  if (spell.area_of_effect) {
+    document.documentElement.style.setProperty('--pseudo-display', 'in-line');
+    area.innerText = spell.area_of_effect.size + 'ft ' + spell.area_of_effect.type;
+  } else {
+    document.documentElement.style.setProperty('--pseudo-display', 'none');
+    area.textContent = '';
+  }
+}
+
+function setRitualTag(spell) {
+  if (spell.ritual && ritualTag.classList.contains('hidden')) {
+    ritualTag.classList.remove('hidden');
+  } else if (!spell.ritual && !ritualTag.classList.contains('hidden')) {
+    ritualTag.classList.add('hidden');
+  }
+}
+
+const spellBook = [];
+function addSpellToBook() {
+  if(name.textContent === '') return;
+  const spell = name.textContent;
+  spellBook.push(spell);
+  localStorage.setItem('spellBook', JSON.stringify(spellBook));
+}
+
+
 listAllSpells();
-listen('click', button, () => {
+listen('click', filter, () => {
   filterSpells();
 });
+
+listen('click', addSpell, () => {
+  addSpellToBook();
+})
