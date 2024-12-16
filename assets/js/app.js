@@ -76,6 +76,11 @@ async function listAllSpells() {
       const spellInfo = await getSpellDetails(spellName);
       
       if (spellInfo) {
+
+        if (spellCard.classList.contains('hidden')) {
+          spellCard.classList.remove('hidden');
+        }
+        
         displaySpellInfo(spellInfo);
       }
     });
@@ -83,27 +88,52 @@ async function listAllSpells() {
 }
 
 function displaySpellInfo(spell) {
-  
-  spellCard.innerHTML = `
-  <h2>${spell.name}</h2>
-  `
-  if (spell.level === 0) {
-    spell.level = 'Cantrip';
-    spellCard.innerHTML += `
-    <p>${spell.level}</p>`
-  } else {
-    spellCard.innerHTML += `
-    <p>Level ${spell.level}</p>`
-  }
+  const name = select('.spell-name');
+  const level = select('.spell-level');
+  const castTime = select('.cast-time');
+  const range = select('.sp-range');
+  const area = select('.sp-area');
+  const components = select('.sp-components');
+  const duration = select('.sp-duration');
+  const description = select('.description');
+  const higherLevel = select('.higher-levels');
 
-  spellCard.innerHTML += `
-  <p>${spell.desc}</p>
-  <p>Range: ${spell.range}</p>
-  <p>Duration: ${spell.duration}</p>
-  <p>Casting Time: ${spell.casting_time}</p>
-  <p>Damage Type: ${spell.damage ? spell.damage.damage_type.name : 'None'}</p>
-  <p>Higher Level: ${spell.higher_level ? spell.higher_level : 'None'}</p>
-  `;
+  name.textContent = spell.name;
+  level.textContent = spell.level === 0 ? 'Cantrip' : `Level ${spell.level}`;
+  castTime.textContent = spell.casting_time;
+  range.textContent = spell.range;
+
+  if (spell.area_of_effect) {
+    area.textContent = spell.area_of_effect.size + 'ft ' + spell.area_of_effect.type;
+  } else {
+    area.textContent = '';
+  }
+  
+  components.textContent = spell.components;  
+  duration.textContent = spell.duration;
+  description.textContent = spell.desc;
+  higherLevel.textContent = spell.higher_level ? spell.higher_level : 'None';
+
+  // spellCard.innerHTML = `
+  // <h2>${spell.name}</h2>
+  // `
+  // if (spell.level === 0) {
+  //   spell.level = 'Cantrip';
+  //   spellCard.innerHTML += `
+  //   <p>${spell.level}</p>`
+  // } else {
+  //   spellCard.innerHTML += `
+  //   <p>Level ${spell.level}</p>`
+  // }
+
+  // spellCard.innerHTML += `
+  // <p>${spell.desc}</p>
+  // <p>Range: ${spell.range}</p>
+  // <p>Duration: ${spell.duration}</p>
+  // <p>Casting Time: ${spell.casting_time}</p>
+  // <p>Damage Type: ${spell.damage ? spell.damage.damage_type.name : 'None'}</p>
+  // <p>Higher Level: ${spell.higher_level ? spell.higher_level : 'None'}</p>
+  // `;
 }
 
 

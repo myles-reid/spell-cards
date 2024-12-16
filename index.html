@@ -17,30 +17,68 @@
     <script src="./assets/js/app.js" type="module"></script>
   </head>
   <body>
-    <main>
+    <main class="container">
       <h2>Spells</h2>
-      <select name="level" id="level">
-        <option selected disabled hidden>--Choose Spell Level--</option>
-        <option value="cantrip">Cantrip</option>
-        <option value="1">1st Level</option>
-        <option value="2">2nd Level</option>
-        <option value="3">3rd Level</option>
-        <option value="4">4th Level</option>
-        <option value="5">5th Level</option>
-        <option value="6">6th Level</option>
-        <option value="7">7th Level</option>
-        <option value="8">8th Level</option>
-        <option value="9">9th Level</option>
-      </select>
-      <button class="button">Search</button>
-      <section class="spell-list">
-        <ul id="spell-list">
-        </ul>
-      </section>
-      <section class="spell-card">
-        <div class="card">
+      <div class="main-wrapper">;
+        <div class="spell-list-wrapper">
+          <select name="level" id="level">
+            <option selected disabled hidden>--Choose Spell Level--</option>
+            <option value="cantrip">Cantrip</option>
+            <option value="1">1st Level</option>
+            <option value="2">2nd Level</option>
+            <option value="3">3rd Level</option>
+            <option value="4">4th Level</option>
+            <option value="5">5th Level</option>
+            <option value="6">6th Level</option>
+            <option value="7">7th Level</option>
+            <option value="8">8th Level</option>
+            <option value="9">9th Level</option>
+          </select>
+          <button class="button">Search</button>
+          <section class="spell-list">
+            <ul id="spell-list">
+            </ul>
+          </section>
         </div>
-      </section>
+        <section class="spell-card">
+          <div class="card hidden">
+            <h3 class="spell-name">Spell Name</h3>
+            <p class="spell-level">Spell Level</p>
+            <div class="quick-info">
+              <div class="row">
+                <div class="cast info-box">
+                  <h5>Casting Time</h5>
+                  <p class="cast-time">Time</p>
+                </div>
+                <div class="range info-box">
+                  <h5>Range/Area</h5>
+                  <p class="sp-range">Range</p>
+                  <p class="sp-area"></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="components info-box">
+                  <h5>Components</h5>
+                  <p class="sp-components">VSM</p>
+                </div>
+                <div class="duration info-box">
+                  <h5>Duration</h5>
+                  <p class="sp-duration">Length</p>
+                </div>
+              </div>
+            </div>
+            <div class="info-text">
+              <div class="description">
+                <p>Spell Description</p>
+              </div>
+              <div>
+                <p>At Higher Levels</p>
+                <p class="higher-levels">None</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
   </body>
 </html>
