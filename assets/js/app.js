@@ -69,6 +69,7 @@ async function getSpellDetails(spell) {
   }
 }
 
+let selectedSpell;
 async function listAllSpells() {
   const spells = await getAllSpells();
   
@@ -95,6 +96,8 @@ async function listAllSpells() {
         }
         
         displaySpellInfo(spellInfo);
+        selectedSpell = spellInfo.index;
+        console.log(selectedSpell);
       }
     });
   });
@@ -166,10 +169,14 @@ function setRitualTag(spell) {
 
 const spellBook = [];
 function addSpellToBook() {
-  if(name.textContent === '') return;
-  const spell = name.textContent;
-  spellBook.push(spell);
+  if(!selectedSpell) return;
+  spellBook.push(selectedSpell);
   localStorage.setItem('spellBook', JSON.stringify(spellBook));
+}
+
+function getSpellBook() {
+  const book = JSON.parse(localStorage.getItem('spellBook'));
+  return book;
 }
 
 
@@ -181,3 +188,9 @@ listen('click', filter, () => {
 listen('click', addSpell, () => {
   addSpellToBook();
 })
+
+listen('load', window, () => {
+  if (localStorage.length > 0 && localStorage.spellBook) {
+    console.log(getSpellBook());
+  }
+});
