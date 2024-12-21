@@ -1,4 +1,6 @@
-export let cardContent = `
+import { create, select, listen } from './utils.js';
+
+let cardContent = `
   <div class="card">
     <div class="ritual-tag hidden"><i class="fa-regular fa-registered"></i></div>
       <h3 class="spell-name"></h3>
@@ -30,10 +32,7 @@ export let cardContent = `
       </div>
       <div class="info-text">
         <div class="description">
-          <p></p>
-        </div>
-        <div>
-          <p class="higher-levels"></p>
+          <button>Description</button>
         </div>
       </div>
       <div class="extras row">
@@ -48,3 +47,64 @@ export let cardContent = `
       </div>
     </div>
 `
+export function buildCard(spell) {
+  const card = create('div');
+  card.innerHTML = cardContent;
+  
+  const name = select('.spell-name', card);
+  const level = select('.spell-level', card);
+  const castTime = select('.cast-time', card);
+  const range = select('.sp-range', card);
+  const area = select('.sp-area', card);
+  const components = select('.sp-components', card);
+  const duration = select('.sp-duration', card);
+  const description = select('.description', card);
+  const higherLevel = select('.higher-levels', card);
+  const magicSchool = select('.magic-school', card);
+  const classes = select('.sp-classes', card);
+  const ritualTag = select('.ritual-tag', card);
+  
+  name.textContent = spell.name;
+  level.textContent = spell.level === 0 ? 'Cantrip' : `Level ${spell.level}`;
+  castTime.textContent = spell.casting_time;
+  range.innerText = spell.range;
+  
+  if (spell.area_of_effect) {
+    document.documentElement.style.setProperty('--pseudo-display', 'in-line');
+    area.innerText = spell.area_of_effect.size + 'ft ' + spell.area_of_effect.type;
+  } else {
+    document.documentElement.style.setProperty('--pseudo-display', 'none');
+    area.textContent = '';
+  }
+
+  if (spell.ritual && ritualTag.classList.contains('hidden')) {
+    ritualTag.classList.remove('hidden');
+  } else if (!spell.ritual && !ritualTag.classList.contains('hidden')) {
+    ritualTag.classList.add('hidden');
+  }
+
+  components.textContent = spell.components.join(', ');  
+  duration.textContent = spell.duration;
+  magicSchool.textContent = spell.school.name;
+  classes.textContent = spell.classes.map(c => c.name).join(', ');
+
+  const descriptionButton = select('button', description);
+  const dialog = select('dialog');
+
+  listen('click', descriptionButton, () => {
+    dialog.innerHTML = `<p>${spell.desc}</p>`;
+    dialog.innerHTML += `<p>${spell.higher_level ? spell.higher_level : ''}</p>`;
+    dialog.showModal();
+  });
+
+  listen('click', dialog, (e) => { 
+    const rect = dialog.getBoundingClientRect();
+    if (e.clientY < rect.top || e.clientY > rect.bottom || 
+        e.clientX < rect.left || e.clientX > rect.right) {
+      dialog.close();
+    }
+  });
+
+
+  return card;
+}

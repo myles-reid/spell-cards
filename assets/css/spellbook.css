@@ -9,3 +9,7 @@ html {
 body {
   background-color: var(--app-color-dark-bg);
 }
+
+dialog {
+  height: fit-content;
+}
