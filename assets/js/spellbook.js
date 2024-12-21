@@ -12,6 +12,8 @@ const options = {
 }
 
 const spellBookCards = select('.spell-book');
+const filterLevel = select('#level');
+const filterBtn = select('.filter');
 
 
 function getSpellBook() {
@@ -59,13 +61,12 @@ async function getSpellDetails(spell) {
 }
 
 function filterSpells() {
-  const spells = selectAll('.spell');
+  const spells = selectAll('.card');
   const filterValue = filterLevel.value;
 
   spells.forEach(item => {
-    const text = item.innerText.toLowerCase();
-
-    if (text.includes(filterValue)) {
+    let level = item.dataset.level;
+    if (level === filterValue || filterValue === 'all') {
       item.classList.remove('none');
     } else {
       item.classList.add('none');
@@ -90,9 +91,10 @@ async function populateSpellBook() {
 listen('load', window, async () => {
   await populateSpellBook();
   sortedSpellBook.forEach(spell => {
-    console.log(spell);
     const card = buildCard(spell);
     spellBookCards.appendChild(card);
   });
 });
+
+listen('click', filterBtn, filterSpells);
 
