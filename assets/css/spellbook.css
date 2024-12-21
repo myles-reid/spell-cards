@@ -13,3 +13,90 @@ body {
 dialog {
   height: fit-content;
 }
+
+.spell-book {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  font-size: 14px;
+  color: white;
+  width: 300px;
+  padding: 15px 20px 20px 20px;
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+  background-color: purple;
+  position: relative;
+}
+
+.card > h3 {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: -10px;
+}
+
+.card > p:first-of-type {
+  font-weight: 200;
+  font-size: 14px;
+  text-align: center;
+}
+
+.card h5 {
+  font-size: 16px;
+}
+
+.ritual-tag {
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  font-size: 18px;
+}
+
+.quick-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+
+.info-box {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-wrap: wrap;
+  width: calc(50% - 10px);
+  padding: 5px;
+  outline: 1px solid white;
+}
+
+.range-area {
+  display: flex;
+  width: 100%;
+  gap: 5px;
+  justify-content: center;
+  text-align: center;
+}
+
+.sp-area::before {
+  content: '/ ';
+  display: var(--pseudo-display);
+}
+
+.info-text {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}

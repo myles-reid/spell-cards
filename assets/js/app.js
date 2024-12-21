@@ -171,7 +171,13 @@ const spellBook = [];
 function addSpellToBook() {
   if(!selectedSpell) return;
   spellBook.push(selectedSpell);
+  if (localStorage.getItem('spellBook')) {
+    const storedBook = JSON.parse(localStorage.getItem('spellBook'));
+    storedBook.push(selectedSpell);
+    localStorage.setItem('spellBook', JSON.stringify(storedBook));
+  } else {
   localStorage.setItem('spellBook', JSON.stringify(spellBook));
+  }
 }
 
 
