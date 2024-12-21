@@ -27,7 +27,6 @@ dialog {
   width: 300px;
   padding: 15px 20px 20px 20px;
   display: grid;
-  gap: 10px;
   justify-content: center;
   background-color: purple;
   position: relative;
@@ -36,7 +35,6 @@ dialog {
 .card > h3 {
   font-size: 20px;
   text-align: center;
-  margin-bottom: -10px;
 }
 
 .card > p:first-of-type {
@@ -89,10 +87,6 @@ dialog {
   text-align: center;
 }
 
-.sp-area::before {
-  content: '/ ';
-  display: var(--pseudo-display);
-}
 
 .info-text {
   display: flex; 

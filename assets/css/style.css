@@ -115,11 +115,6 @@ li p {
   text-align: center;
 }
 
-.sp-area::before {
-  content: '/ ';
-  display: var(--pseudo-display);
-}
-
 .info-text {
   display: flex; 
   flex-direction: column;

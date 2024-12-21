@@ -151,10 +151,8 @@ function displaySpellInfo(spell) {
 
 function setAreaOfEffect(spell) {
   if (spell.area_of_effect) {
-    document.documentElement.style.setProperty('--pseudo-display', 'in-line');
-    area.innerText = spell.area_of_effect.size + 'ft ' + spell.area_of_effect.type;
+    area.innerText = ` / ${spell.area_of_effect.size}ft ${spell.area_of_effect.type}`;
   } else {
-    document.documentElement.style.setProperty('--pseudo-display', 'none');
     area.textContent = '';
   }
 }
