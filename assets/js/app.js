@@ -174,10 +174,7 @@ function addSpellToBook() {
   localStorage.setItem('spellBook', JSON.stringify(spellBook));
 }
 
-function getSpellBook() {
-  const book = JSON.parse(localStorage.getItem('spellBook'));
-  return book;
-}
+
 
 
 listAllSpells();
@@ -189,8 +186,3 @@ listen('click', addSpell, () => {
   addSpellToBook();
 })
 
-listen('load', window, () => {
-  if (localStorage.length > 0 && localStorage.spellBook) {
-    console.log(getSpellBook());
-  }
-});
