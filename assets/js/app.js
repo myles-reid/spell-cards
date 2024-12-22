@@ -13,7 +13,6 @@ const options = {
 }
 
 const filterLevel = select('#level');
-const filter = select('.filter');
 const spellList = select('#spell-list');
 const spellCard = select('.card');
 const name = select('.spell-name');
@@ -29,6 +28,7 @@ const magicSchool = select('.magic-school');
 const classes = select('.sp-classes');
 const ritualTag = select('.ritual-tag');
 const addSpell = select('.add-spell');
+const preloader = select('.loader-wrapper');
 
 async function getAllSpells() {
   try {
@@ -120,6 +120,12 @@ function filterSpells() {
   const spells = selectAll('.spell');
   const filterValue = filterLevel.value;
 
+  if (filterValue === 'all') {
+    spells.forEach(item => {
+      item.classList.remove('none');
+    });
+    return;
+  }
   spells.forEach(item => {
     const text = item.innerText.toLowerCase();
 
@@ -181,8 +187,10 @@ function addSpellToBook() {
 
 
 
-listAllSpells();
-listen('click', filter, () => {
+listAllSpells().then(() => {
+  preloader.classList.toggle('none');
+});
+listen('change', filterLevel, () => {
   filterSpells();
 });
 
@@ -190,3 +198,6 @@ listen('click', addSpell, () => {
   addSpellToBook();
 })
 
+// listen('fetch', spellList , () => {
+//   preloader.classList.toggle('none');
+// } )

@@ -27,10 +27,34 @@ main > h2 {
   justify-content: space-evenly;
 }
 
+.spell-list-wrapper {
+  height: 75svh;
+  width: 340px;
+  display: grid;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filter-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .spell-list {
-  height: 200px;
-  width: fit-content;
-  overflow-y: scroll;
+  height: 70svh;
+  width: 340px;
+  border: 1px solid white;
+  padding: 0 10px;
+  overflow-y: auto;
+}
+
+select {
+  width: 70%;
+  text-align: center;
+}
+
+.filter {
+  width: 20%
 }
 
 li {
@@ -50,7 +74,7 @@ li p {
 .card {
   font-size: 14px;
   color: white;
-  max-width: 400px;
+  width: 400px;
   padding: 15px 20px 20px 20px;
   display: grid;
   gap: 10px;

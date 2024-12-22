@@ -14,27 +14,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mrspecht/cdn/reset.css">
     <link rel="stylesheet" media="all" href="./assets/css/style.css">
+    <link rel="stylesheet" media="all" href="./assets/css/loader.css">
     <script src="./assets/js/app.js" type="module"></script>
   </head>
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+    <div class="loader-section section-left"></div>
+    <div class="loader-section section-right"></div>
+  </div>
   <body>
     <main class="container">
       <h2>Spells</h2>
       <div class="main-wrapper">;
         <div class="spell-list-wrapper">
-          <select name="level" id="level">
-            <option selected disabled hidden>--Choose Spell Level--</option>
-            <option value="cantrip">Cantrip</option>
-            <option value="1">1st Level</option>
-            <option value="2">2nd Level</option>
-            <option value="3">3rd Level</option>
-            <option value="4">4th Level</option>
-            <option value="5">5th Level</option>
-            <option value="6">6th Level</option>
-            <option value="7">7th Level</option>
-            <option value="8">8th Level</option>
-            <option value="9">9th Level</option>
-          </select>
-          <button class="filter">Search</button>
+          <div class="filter-wrapper">
+            <select name="level" id="level">
+              <option selected disabled hidden>--Choose Spell Level--</option>
+              <option value="all">All Spells</option>
+              <option value="cantrip">Cantrip</option>
+              <option value="1">1st Level</option>
+              <option value="2">2nd Level</option>
+              <option value="3">3rd Level</option>
+              <option value="4">4th Level</option>
+              <option value="5">5th Level</option>
+              <option value="6">6th Level</option>
+              <option value="7">7th Level</option>
+              <option value="8">8th Level</option>
+              <option value="9">9th Level</option>
+            </select>
+          </div>
           <section class="spell-list">
             <ul id="spell-list">
             </ul>
@@ -42,7 +50,7 @@
           <button class="add-spell button">Add Spell</button>
         </div>
         <section class="spell-card">
-          <div class="card">
+          <div class="card hidden">
             <div class="ritual-tag hidden"><i class="fa-regular fa-registered"></i></div>
             <h3 class="spell-name"></h3>
             <p class="spell-level"></p>
