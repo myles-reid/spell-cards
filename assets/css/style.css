@@ -97,7 +97,7 @@ li p {
   display: grid;
   gap: 10px;
   justify-content: center;
-  background: #ffdead url(../img/background-2076335_1920.jpg) no-repeat center center;
+  background: #ffdead url(../img/card-bg.jpg) no-repeat center center;
   position: relative;
   border-radius: 10px;
 }
