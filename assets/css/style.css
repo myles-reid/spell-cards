@@ -23,8 +23,9 @@ main > h2 {
 
 .main-wrapper {
   width: 100%;
+  height: calc(100svh - 65px);
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-evenly
 }
 
 .spell-list-wrapper {
@@ -40,21 +41,22 @@ main > h2 {
   justify-content: space-evenly;
 }
 
+select {
+  font-family: "Almendra SC", serif;
+  width: 70%;
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 6px;
+}
+
 .spell-list {
   height: 70svh;
   width: 340px;
   border: 1px solid white;
   padding: 0 10px;
   overflow-y: auto;
-}
-
-select {
-  width: 70%;
-  text-align: center;
-}
-
-.filter {
-  width: 20%
+  border-radius: 6px;
 }
 
 li {
@@ -71,38 +73,58 @@ li p {
   margin-right: 10px;
 }
 
+
+.add-spell {
+  font-family: "Almendra SC", serif;
+  font-weight: 600;
+  justify-self: center;
+  width: fit-content;
+  padding: 5px 20px;
+  border-radius: 6px;
+}
+
+.spell-card {
+  display: flex;
+  align-items: flex-start;
+}
+
 .card {
   font-size: 14px;
-  color: white;
+  color: #000;
   width: 400px;
+  height: auto;
   padding: 15px 20px 20px 20px;
   display: grid;
   gap: 10px;
   justify-content: center;
-  background-color: purple;
+  background: #ffdead url(../img/background-2076335_1920.jpg) no-repeat center center;
   position: relative;
+  border-radius: 10px;
 }
 
 .card > h3 {
-  font-size: 20px;
+  font-family: "Almendra SC", serif;
+  font-size: 24px;
   text-align: center;
   margin-bottom: -10px;
 }
 
 .card > p:first-of-type {
+  font-family: "Almendra SC", serif;
   font-weight: 200;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
 }
 
 .card h5 {
+  font-family: "Almendra SC", serif;
   font-size: 16px;
 }
 
 .ritual-tag {
   position: absolute;
-  top: 20px;
-  right: 50px;
+  top: 25px;
+  right: 25px;
   font-size: 18px;
 }
 
@@ -110,14 +132,15 @@ li p {
   display: flex;
   flex-direction: column;
   width: 100%;
+  gap: 10px;
 }
 
 .row {
   display: flex;
   justify-content: center;
   width: 100%;
+  gap: 10px;
 }
-
 
 .info-box {
   display: flex; 
@@ -128,7 +151,8 @@ li p {
   text-wrap: wrap;
   width: calc(50% - 10px);
   padding: 5px;
-  outline: 1px solid white;
+  outline: 1px solid #000;
+  border-radius: 10px;
 }
 
 .range-area {
@@ -146,8 +170,58 @@ li p {
   gap: 10px;
 }
 
-.description {
-  overflow-y: auto;
+.description, .higher-levels {
+  text-indent: 20px;
+  font-weight: 600;
+}
+
+.spellbook-btn-wrapper {
+  height: fit-content;
+  align-self: center;
+}
+
+.spellbook {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 50px 20px;
+  border-radius: 6px;
+  background-color: #753a10;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  clip-path: polygon(0% 0%, 50% 6.75%, 100% 0%, 100% 100%, 50% 93.75%, 0% 100%);
+  transition: all 0.25s ease-in-out;
+}
+.spellbook:after {
+  content: '';
+  position: absolute;
+  height: 95%;
+  width: 95%;
+  background-color: #ffdead;
+  border-radius: 6px;
+  z-index: 1;
+  clip-path: polygon(0% 0%, 50% 6.75%, 100% 0%, 100% 100%, 50% 93.75%, 0% 100%);
+}
+
+.spellbook:before {
+  content: 'Spellbook';
+  font-family: "Almendra SC", serif;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88%;
+  width: 88%;
+  background-color: #fffaf0;
+  border-radius: 6px;
+  z-index: 2;
+  clip-path: polygon(0% 0%, 50% 6.75%, 100% 0%, 100% 100%, 50% 93.75%, 0% 100%);
+}
+
+.spellbook:hover {
+  scale: 1.05;
 }
 
 
