@@ -92,7 +92,8 @@ export function buildCard(spell) {
   const dialog = select('dialog');
 
   listen('click', descriptionButton, () => {
-    dialog.innerHTML = `<p>${spell.desc}</p>`;
+    dialog.innerHTML = `<h3>${spell.name}</h3>`;
+    dialog.innerHTML += `<p>${spell.desc}</p>`;
     dialog.innerHTML += `<p>${spell.higher_level ? spell.higher_level : ''}</p>`;
     dialog.showModal();
   });

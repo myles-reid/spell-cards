@@ -17,8 +17,27 @@ body {
   background-color: var(--app-color-dark-bg);
 }
 
-dialog {
+dialog[open] {
   height: fit-content;
+  justify-self: center;
+  align-self: center;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+dialog[open] h3 {
+  font-family: "Almendra SC", serif;
+  font-size: 24px;
+  text-align: center;
+}
+
+dialog[open] p {
+  font-size: 18px;
+  text-indent: 20px;
 }
 
 main, .main-wrapper {
@@ -164,7 +183,7 @@ main, .main-wrapper {
 }
 
 .back-wrap {
-  position: fixed;
+  position: absolute;
   top: 50px;
   right: 100px;
 }

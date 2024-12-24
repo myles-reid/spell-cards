@@ -97,6 +97,7 @@ async function populateSpellBook() {
   }
 
 listen('load', window, async () => {
+  
   await populateSpellBook();
   sortedSpellBook.forEach(spell => {
     console.log(spell);
