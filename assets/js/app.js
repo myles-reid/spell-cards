@@ -12,6 +12,12 @@ const options = {
   mode: 'cors'
 }
 
+// TODO: Add textbox to search for spells by name
+// FIX: Preloader
+// TODO: Add Error for API fetch
+// TODO: Add Validation to prevent duplicate spells in book
+// TODO: Add Loader for when a card is selected
+// TODO: Add filter for class as well - will have to edit how its filtered
 const filterLevel = select('#level');
 const spellList = select('#spell-list');
 const spellCard = select('.card');
@@ -191,6 +197,7 @@ listAllSpells().then(() => {
   preloader.classList.toggle('none');
 });
 listen('change', filterLevel, () => {
+  filterLevel.blur();
   filterSpells();
 });
 

@@ -11,9 +11,17 @@ const options = {
   mode: 'cors'
 }
 
+// TODO: Add Filter for text search
+// TODO: Add check for no spells in book and add Error message
+// Idea: add secondary spellbooks?
+// TODO: Add error for Fetch API
+// TODO: Add Preloader
+// TODO: Add Delete all Spells button
+// TODO: Add validation to current delete button
+
+
 const spellBookCards = select('.spell-book');
 const filterLevel = select('#level');
-const filterBtn = select('.filter');
 
 
 function getSpellBook() {
@@ -97,5 +105,8 @@ listen('load', window, async () => {
   });
 });
 
-listen('click', filterBtn, filterSpells);
+listen('change', filterLevel, () => {
+  filterLevel.blur();
+  filterSpells();
+});
 
