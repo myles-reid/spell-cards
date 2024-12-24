@@ -7,9 +7,7 @@ html {
 }
 /* 
   TODO:
-  Style cards
   Style Dialog
-  Position filter
   Add Font to HTML
   Add Preloader
   Add Animation to cards on load
@@ -41,6 +39,7 @@ main, .main-wrapper {
   appearance: none;
   background: #fff url(../img/arrow.png) no-repeat right 10px top 50%;
   background-size: 15px;
+  cursor: pointer;
 }
 
 .spell-list-wrapper select:focus {
@@ -141,6 +140,14 @@ main, .main-wrapper {
   letter-spacing: 0.75px;
   padding: 5px 12px;
   border-radius: 6px;
+  border: 1px solid #000;
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 40%);
+  transition: all 0.25s ease-in-out;
+}
+
+.description button:hover {
+  background-color: #ffdead;
+  box-shadow: none;
 }
 
 .delete {
@@ -149,4 +156,27 @@ main, .main-wrapper {
   font-size: 18px;
   color: red;
   background-color: transparent;
+  transition: all 0.25s ease-in-out;
+}
+
+.delete:hover {
+  scale: 1.1;
+}
+
+.back-wrap {
+  position: fixed;
+  top: 50px;
+  right: 100px;
+}
+
+.back {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 6px;
+  transition: all 0.25s ease-in-out;
+}
+
+.back:hover {
+  background-color: #ffdead;
 }
