@@ -15,7 +15,6 @@ const options = {
 // TODO: Add textbox to search for spells by name
 // FIX: Preloader
 // TODO: Add Error for API fetch
-// TODO: Add Validation to prevent duplicate spells in book
 // TODO: Add Loader for when a card is selected
 // TODO: Add filter for class as well - will have to edit how its filtered
 const filterLevel = select('#level');
@@ -186,7 +185,7 @@ function addSpellToBook() {
     localStorage.setItem('spellBook', JSON.stringify(spellBook));
     return;
   }
-  
+
   if (storedBook.includes(selectedSpell)) {
     console.log(`${selectedSpell} already in book`);
     return;

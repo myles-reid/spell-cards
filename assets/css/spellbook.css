@@ -10,6 +10,7 @@ html {
   Add Preloader
   Add Animation to cards on load
   Add Animation for Dialog
+  Style Dialog no spells error. 
 */
 body {
   background-color: var(--app-color-dark-bg);

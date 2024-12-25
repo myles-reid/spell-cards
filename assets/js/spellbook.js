@@ -12,7 +12,7 @@ const options = {
 }
 
 // TODO: Add Filter for text search
-// TODO: Add check for no spells in book and add Error message
+
 // Idea: add secondary spellbooks?
 // TODO: Add error for Fetch API
 // TODO: Add Preloader
@@ -23,11 +23,20 @@ const options = {
 
 const spellBookCards = select('.spell-book');
 const filterLevel = select('#level');
+const dialog = select('dialog');
+const backbtn = select('.back');
 
 
 function getSpellBook() {
   let spells = localStorage.getItem('spellBook');
-  return spells ? JSON.parse(spells) : [];
+  if (!spells) {
+    dialog.innerHTML = `<p>No spells in your spellbook</p>`;
+    dialog.innerHTML += `<button class="close">Go Back</button>`;
+    dialog.showModal();
+    listen('click', select('.close'), () => window.history.back());
+    return [];
+  } else {backbtn.classList.remove('hidden');}
+  return JSON.parse(spells);
 }
 
 async function getAllSpells() {
@@ -96,6 +105,7 @@ async function populateSpellBook() {
     });
     sortedSpellBook.sort((a, b) => a.level - b.level);
   }
+
 
 listen('load', window, async () => {
   
