@@ -7,8 +7,6 @@ html {
 }
 /* 
   TODO:
-  Style Dialog
-  Add Font to HTML
   Add Preloader
   Add Animation to cards on load
   Add Animation for Dialog
@@ -71,6 +69,7 @@ main, .main-wrapper {
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .card {
@@ -96,13 +95,16 @@ main, .main-wrapper {
 }
 
 .card > p:first-of-type {
+  font-family: "Almendra SC", serif;
   font-weight: 200;
   font-size: 14px;
   text-align: center;
 }
 
 .card h5 {
+  font-family: "Almendra SC", serif;
   font-size: 14px;
+  letter-spacing: 0.5px;
 }
 
 .ritual-tag {
@@ -185,7 +187,7 @@ main, .main-wrapper {
 .back-wrap {
   position: absolute;
   top: 50px;
-  right: 100px;
+  left: 100px;
 }
 
 .back {

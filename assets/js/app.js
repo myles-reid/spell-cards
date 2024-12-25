@@ -103,7 +103,6 @@ async function listAllSpells() {
         
         displaySpellInfo(spellInfo);
         selectedSpell = spellInfo.index;
-        console.log(selectedSpell);
       }
     });
   });
@@ -179,14 +178,22 @@ function setRitualTag(spell) {
 
 const spellBook = [];
 function addSpellToBook() {
-  if(!selectedSpell) return;
+  if (!selectedSpell) return;
   spellBook.push(selectedSpell);
-  if (localStorage.getItem('spellBook')) {
-    const storedBook = JSON.parse(localStorage.getItem('spellBook'));
+  let storedBook = JSON.parse(localStorage.getItem('spellBook'));
+
+  if(!storedBook) {
+    localStorage.setItem('spellBook', JSON.stringify(spellBook));
+    return;
+  }
+  
+  if (storedBook.includes(selectedSpell)) {
+    console.log(`${selectedSpell} already in book`);
+    return;
+  } else {
+    console.log(`${selectedSpell} added to book`);
     storedBook.push(selectedSpell);
     localStorage.setItem('spellBook', JSON.stringify(storedBook));
-  } else {
-  localStorage.setItem('spellBook', JSON.stringify(spellBook));
   }
 }
 

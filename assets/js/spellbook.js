@@ -18,6 +18,7 @@ const options = {
 // TODO: Add Preloader
 // TODO: Add Delete all Spells button
 // TODO: Add validation to current delete button
+// TODO: Add prepared spells checkboxes and filter
 
 
 const spellBookCards = select('.spell-book');

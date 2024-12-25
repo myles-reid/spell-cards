@@ -46,6 +46,7 @@ let cardContent = `
   </div>
   <button class="delete"><i class="fa-regular fa-trash-alt"></i></button>
 `
+// TODO: Add Checkbox for prepared spells
 export function buildCard(spell) {
   const card = create('div');
   card.classList.add('card');
