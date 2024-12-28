@@ -47,6 +47,7 @@ async function getAllSpells() {
     const spells = data.results;
     return spells;
   } catch (error) {
+    spellList.innerHTML = '<li class="spell"><p>Unable to Access Spells</p></li>'
     console.log(error.message);
   }
 }
