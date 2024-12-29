@@ -1,6 +1,8 @@
 'use strict';
 
-import { select, listen, selectAll } from './utils.js';
+import { 
+  select, listen, selectAll, addClass, removeClass 
+} from './utils.js';
 
 const BASE_URL = 'https://www.dnd5eapi.co';
 
@@ -92,15 +94,14 @@ async function listAllSpells() {
   listedSpells.forEach(spell => {
 
     listen('focus', spell, async function() {
+      animateCard();
       const spellName = spell.querySelector('h4').textContent;
       const spellInfo = await getSpellDetails(spellName);
       
       if (spellInfo) {
-
         if (spellCard.classList.contains('hidden')) {
           spellCard.classList.remove('hidden');
         }
-        
         displaySpellInfo(spellInfo);
         selectedSpell = spellInfo.index;
       }
@@ -197,7 +198,12 @@ function addSpellToBook() {
   }
 }
 
-
+function animateCard() {
+  addClass(spellCard, 'slide-rotate');
+  setTimeout(() => {
+    removeClass(spellCard, 'slide-rotate');
+  }, 1200);
+}
 
 
 listAllSpells().then(() => {

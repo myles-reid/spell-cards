@@ -30,6 +30,10 @@ export function removeClass(element, text) {
   return element.classList.remove(text);
 }
 
+export function replaceClass(element, current, update) {
+  return element.classList.replace(current, update);
+}
+
 export function toggleClass(element, text) {
   return element.classList.toggle(text);
 }
