@@ -18,6 +18,7 @@ const options = {
 // TODO: Add Preloader
 // TODO: Add Delete all Spells button
 // TODO: Add validation to current delete button
+// TODO: Add notice for deleting spells
 // TODO: Add prepared spells checkboxes and filter
 
 

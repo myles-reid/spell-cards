@@ -19,6 +19,7 @@ const options = {
 // TODO: Add Error for API fetch
 // TODO: Add Loader for when a card is selected
 // TODO: Add filter for class as well - will have to edit how its filtered
+// TODO: Add verification to 'add spell'
 const filterLevel = select('#level');
 const spellList = select('#spell-list');
 const spellCard = select('.card');
@@ -35,6 +36,7 @@ const magicSchool = select('.magic-school');
 const classes = select('.sp-classes');
 const ritualTag = select('.ritual-tag');
 const addSpell = select('.add-spell');
+const addSpellConfirm = select('.add-spell-message');
 const preloader = select('.loader-wrapper');
 
 async function getAllSpells() {
@@ -103,7 +105,7 @@ async function listAllSpells() {
           spellCard.classList.remove('hidden');
         }
         displaySpellInfo(spellInfo);
-        selectedSpell = spellInfo.index;
+        selectedSpell = spellInfo;
       }
     });
   });
@@ -180,22 +182,39 @@ function setRitualTag(spell) {
 const spellBook = [];
 function addSpellToBook() {
   if (!selectedSpell) return;
-  spellBook.push(selectedSpell);
+  let spellIndex = selectedSpell.index
+  spellBook.push(spellIndex);
   let storedBook = JSON.parse(localStorage.getItem('spellBook'));
 
   if(!storedBook) {
     localStorage.setItem('spellBook', JSON.stringify(spellBook));
+    displayConfirmation('new');
     return;
   }
 
-  if (storedBook.includes(selectedSpell)) {
-    console.log(`${selectedSpell} already in book`);
+  if (storedBook.includes(spellIndex)) {
+    displayConfirmation();
+    console.log('already added')
     return;
   } else {
-    console.log(`${selectedSpell} added to book`);
-    storedBook.push(selectedSpell);
+    displayConfirmation('new');
+    console.log('new spell added');
+    storedBook.push(spellIndex);
     localStorage.setItem('spellBook', JSON.stringify(storedBook));
   }
+}
+
+function displayConfirmation(state = 'exists') {
+  if(!selectedSpell) return;
+  if (state === 'exists') {
+    addSpellConfirm.innerText = `${selectedSpell.name} already in spellbook`;
+  } else {
+    addSpellConfirm.innerText = `${selectedSpell.name} added to spellbook`;
+  }
+  addSpellConfirm.style.visibility = 'visible';
+  setTimeout(() => {
+    addSpellConfirm.style.visibility = 'hidden';
+  }, 1000);
 }
 
 function animateCard() {
@@ -204,6 +223,7 @@ function animateCard() {
     removeClass(spellCard, 'slide-rotate');
   }, 1200);
 }
+
 
 
 listAllSpells().then(() => {

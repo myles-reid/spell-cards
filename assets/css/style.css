@@ -5,10 +5,8 @@
 
 /*
   TODO:
-  Animations?!?
+  Add hover to 'add spell' button
   Change Background?
-  Align the Spell List
-  Attempt to align the spell Cards - height may be a factor.
   Add loader for cards
 */
 html {
@@ -90,6 +88,20 @@ li p {
   width: fit-content;
   padding: 5px 20px;
   border-radius: 6px;
+  position: relative;
+}
+
+.add-spell-message {
+  position: absolute;
+  z-index: 1;
+  width: 150px;
+  visibility: hidden;
+  background-color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  top: -5px;
+  left: 105%;
 }
 
 .spell-card {
