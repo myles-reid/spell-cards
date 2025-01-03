@@ -181,7 +181,10 @@ function setRitualTag(spell) {
 
 const spellBook = [];
 function addSpellToBook() {
-  if (!selectedSpell) return;
+  if (!selectedSpell) {
+    displayConfirmation('noSelect');
+    return;
+  }
   let spellIndex = selectedSpell.index
   spellBook.push(spellIndex);
   let storedBook = JSON.parse(localStorage.getItem('spellBook'));
@@ -193,24 +196,28 @@ function addSpellToBook() {
   }
 
   if (storedBook.includes(spellIndex)) {
-    displayConfirmation();
-    console.log('already added')
+    displayConfirmation('exists');
     return;
   } else {
     displayConfirmation('new');
-    console.log('new spell added');
     storedBook.push(spellIndex);
     localStorage.setItem('spellBook', JSON.stringify(storedBook));
   }
 }
 
-function displayConfirmation(state = 'exists') {
-  if(!selectedSpell) return;
-  if (state === 'exists') {
-    addSpellConfirm.innerText = `${selectedSpell.name} already in spellbook`;
-  } else {
-    addSpellConfirm.innerText = `${selectedSpell.name} added to spellbook`;
+function displayConfirmation(arg) {
+  switch(arg) {
+    case 'noSelect':
+      addSpellConfirm.innerText = 'Please Select a spell before adding';
+      break;
+    case 'exists': 
+      addSpellConfirm.innerText = `${selectedSpell.name} already in spellbook`;
+      break;
+    case 'new':
+      addSpellConfirm.innerText = `${selectedSpell.name} added to spellbook`;
+      break;
   }
+  
   addSpellConfirm.style.visibility = 'visible';
   setTimeout(() => {
     addSpellConfirm.style.visibility = 'hidden';

@@ -5,7 +5,6 @@
 
 /*
   TODO:
-  Add hover to 'add spell' button
   Change Background?
   Add loader for cards
 */
@@ -89,6 +88,11 @@ li p {
   padding: 5px 20px;
   border-radius: 6px;
   position: relative;
+  transition: all 0.25s ease-in-out;
+}
+
+.add-spell:hover {
+  background-color: #ffdead;
 }
 
 .add-spell-message {
@@ -98,7 +102,7 @@ li p {
   visibility: hidden;
   background-color: #fff;
   text-align: center;
-  padding: 5px 0;
+  padding: 5px 10px;
   border-radius: 6px;
   top: -5px;
   left: 105%;
