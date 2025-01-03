@@ -15,11 +15,9 @@ const options = {
 }
 
 // TODO: Add textbox to search for spells by name
-// FIX: Preloader
 // TODO: Add Error for API fetch
 // TODO: Add Loader for when a card is selected
 // TODO: Add filter for class as well - will have to edit how its filtered
-// TODO: Add verification to 'add spell'
 const filterLevel = select('#level');
 const spellList = select('#spell-list');
 const spellCard = select('.card');
@@ -234,8 +232,13 @@ function animateCard() {
 
 
 listAllSpells().then(() => {
-  preloader.classList.toggle('none');
+  preloader.style.opacity = 0;
+}).then(() => {
+  setTimeout(() => {
+    preloader.style.display = 'none';
+  }, 500);
 });
+
 listen('change', filterLevel, () => {
   filterLevel.blur();
   filterSpells();

@@ -10,7 +10,8 @@
   height: 100%;
   background-color: #000;
   z-index: 1000;
-  display: none;
+  opacity: 100;
+  transition: opacity 0.5s ease-out;
 }
 
 .loader {
