@@ -20,6 +20,8 @@ dialog[open] {
   height: fit-content;
   justify-self: center;
   align-self: center;
+  align-items: center;
+  justify-self: center;
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -37,6 +39,19 @@ dialog[open] h3 {
 dialog[open] p {
   font-size: 18px;
   text-indent: 20px;
+}
+
+dialog[open] .close {
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background-color: #ebebeb;
+  align-self: center;
+  transition: all 0.25s ease-in-out 
+}
+
+dialog[open] .close:hover {
+  background-color: #ffdead;
 }
 
 main, .main-wrapper {
