@@ -15,7 +15,6 @@ const options = {
 
 // Idea: add secondary spellbooks?
 // TODO: Add error for Fetch API
-// TODO: Add Preloader
 // TODO: Add Delete all Spells button
 // TODO: Add validation to current delete button
 // TODO: Add notice for deleting spells
@@ -26,6 +25,7 @@ const spellBookCards = select('.spell-book');
 const filterLevel = select('#level');
 const dialog = select('dialog');
 const backbtn = select('.back');
+const preloader = select('.loader-wrapper');
 
 
 function getSpellBook() {
@@ -107,16 +107,21 @@ async function populateSpellBook() {
     sortedSpellBook.sort((a, b) => a.level - b.level);
   }
 
+  async function loadPage() {
+    await populateSpellBook();
+    sortedSpellBook.forEach(spell => {
+      const card = buildCard(spell);
+      spellBookCards.appendChild(card);
+    });
+  }
 
-listen('load', window, async () => {
-  
-  await populateSpellBook();
-  sortedSpellBook.forEach(spell => {
-    console.log(spell);
-    const card = buildCard(spell);
-    spellBookCards.appendChild(card);
+  loadPage().then(() => {
+    preloader.style.opacity = 0;
+  }).then(() => {
+    setTimeout(() => {
+      preloader.style.display = 'none';
+    }, 500);
   });
-});
 
 listen('change', filterLevel, () => {
   filterLevel.blur();
