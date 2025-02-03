@@ -94,10 +94,15 @@ async function listAllSpells() {
   listedSpells.forEach(spell => {
 
     listen('focus', spell, async function() {
-      animateCard();
+      // animateCard();
+      addClass(spellCard, 'slide-rotate');
       const spellName = spell.querySelector('h4').textContent;
       const spellInfo = await getSpellDetails(spellName);
+      setTimeout(() => {
+        removeClass(spellCard, 'slide-rotate');
+      }, 800);
       
+      // animateCard();
       if (spellInfo) {
         if (spellCard.classList.contains('hidden')) {
           spellCard.classList.remove('hidden');

@@ -10,6 +10,7 @@
 */
 html {
   font-family: 'Nunito Sans', 'Fira Sans', Arial, sans-serif;
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -31,7 +32,7 @@ main > h2 {
   width: 100%;
   height: calc(100svh - 65px);
   display: flex;
-  justify-content: space-evenly
+  justify-content: space-evenly;
 }
 
 .spell-list-wrapper {
