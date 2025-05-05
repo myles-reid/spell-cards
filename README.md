@@ -21,9 +21,6 @@ Using the D&D 5e API (https://www.dnd5eapi.co/), this project aims to assist pla
     </tr>
   </table>
 </div>
-<!-- <img src="./assets/img/Main-Page.png" alt="Main Page SS" style="width:50%; height:auto;">
-<img src="./assets/img/Spell-Card.png" alt="Spell Card SS" style="width:50%; height:auto;">
-<img src="./assets/img/Spellbook.png" alt="Spellbook SS" style="width:50%; height:auto;"> -->
 
 ## Features
 
@@ -34,6 +31,7 @@ Using the D&D 5e API (https://www.dnd5eapi.co/), this project aims to assist pla
 
 
 ## Roadmap
+- Add Device compatibility
 
 - Search by spell
 
