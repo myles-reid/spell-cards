@@ -4,9 +4,26 @@ Using the D&D 5e API (https://www.dnd5eapi.co/), this project aims to assist pla
 
 
 ## Screenshots
-<img src="./assets/img/Main-Page.png" alt="Main Page SS" style="width:50%; height:auto;">
+<div align="center">
+  <table style="border:none;">
+    <tr style="border:none;">
+      <td style="border:none;">
+        <img src="./assets/img/Main-Page.png" alt="Main Page SS">
+      </td>
+      <td style="border:none;">
+        <img src="./assets/img/Spell-Card.png" alt="Spell Card SS">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" style="border:none;">
+        <img src="./assets/img/Spellbook.png" alt="Spellbook SS" style="width:50%; height:auto;">
+      </td>
+    </tr>
+  </table>
+</div>
+<!-- <img src="./assets/img/Main-Page.png" alt="Main Page SS" style="width:50%; height:auto;">
 <img src="./assets/img/Spell-Card.png" alt="Spell Card SS" style="width:50%; height:auto;">
-<img src="./assets/img/Spellbook.png" alt="Spellbook SS" style="width:50%; height:auto;">
+<img src="./assets/img/Spellbook.png" alt="Spellbook SS" style="width:50%; height:auto;"> -->
 
 ## Features
 
