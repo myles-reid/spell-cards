@@ -5,7 +5,7 @@ Using the D&D 5e API (https://www.dnd5eapi.co/), this project aims to assist pla
 
 ## Screenshots
 <div align="center">
-  <table style="border:none;">
+  <table style="border-collapse: collapse; border:none;">
     <tr style="border:none;">
       <td style="border:none;">
         <img src="./assets/img/Main-Page.png" alt="Main Page SS">
